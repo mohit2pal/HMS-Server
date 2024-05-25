@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
-import json
+from flask import Flask, request
+from flask_cors import CORS
 import os
 from flask_mail import Mail, Message
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 mail_username = os.environ.get('MAIL_USERNAME')
@@ -20,9 +20,11 @@ CORS(app)
 
 mail = Mail(app)
 
+
 @app.route("/")
 def index():
     return "This is HMS-Server"
+
 
 @app.route('/send-email', methods=["POST"])
 def send_email():
