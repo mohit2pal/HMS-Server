@@ -29,6 +29,9 @@ mail = Mail(app)
 def index():
     """
     Route handler for the home page.
+
+    Returns:
+        str: A welcome message for the HMS-Server.
     """
     return "This is HMS-Server"
 
@@ -37,6 +40,15 @@ def index():
 def send_email():
     """
     Route handler for sending an email.
+
+    This function handles POST requests to send an email. It expects the request
+    to contain 'subject', 'recipient', and 'body' parameters in the form data.
+    If any of these parameters are missing, it returns an error message.
+    Otherwise, it constructs an email message and sends it using the configured
+    mail server.
+
+    Returns:
+        str: A success message if the email is sent, otherwise an error message.
     """
     if request.method == "POST":
         data = request.form
